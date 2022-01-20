@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { sessions: 'users/sessions', registration: 'users/registrations' }
-
-  resources :profiles
+  devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
   
   devise_scope :user do
     authenticated :user do
@@ -13,5 +11,7 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :users, only: [:index]
+  resources :users, only: [:index] do
+    resource :profile
+  end
 end
