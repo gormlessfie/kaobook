@@ -17,10 +17,10 @@ ActiveRecord::Schema.define(version: 2022_01_20_052118) do
 
   create_table "ages", force: :cascade do |t|
     t.integer "age", null: false
-    t.bigint "details_id", null: false
+    t.bigint "detail_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["details_id"], name: "index_ages_on_details_id"
+    t.index ["detail_id"], name: "index_ages_on_detail_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -34,10 +34,10 @@ ActiveRecord::Schema.define(version: 2022_01_20_052118) do
 
   create_table "contact_informations", force: :cascade do |t|
     t.string "phone_number", default: "000-000-0000", null: false
-    t.bigint "details_id", null: false
+    t.bigint "detail_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["details_id"], name: "index_contact_informations_on_details_id"
+    t.index ["detail_id"], name: "index_contact_informations_on_detail_id"
   end
 
   create_table "descriptions", force: :cascade do |t|
@@ -58,10 +58,10 @@ ActiveRecord::Schema.define(version: 2022_01_20_052118) do
 
   create_table "genders", force: :cascade do |t|
     t.string "gender", null: false
-    t.bigint "details_id", null: false
+    t.bigint "detail_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["details_id"], name: "index_genders_on_details_id"
+    t.index ["detail_id"], name: "index_genders_on_detail_id"
   end
 
   create_table "locations", force: :cascade do |t|
@@ -70,19 +70,19 @@ ActiveRecord::Schema.define(version: 2022_01_20_052118) do
     t.string "state", default: "", null: false
     t.string "country", default: "", null: false
     t.integer "zip", default: 0, null: false
-    t.bigint "details_id", null: false
+    t.bigint "detail_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["details_id"], name: "index_locations_on_details_id"
+    t.index ["detail_id"], name: "index_locations_on_detail_id"
   end
 
   create_table "names", force: :cascade do |t|
     t.string "fname", null: false
     t.string "lname", null: false
-    t.bigint "details_id", null: false
+    t.bigint "detail_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["details_id"], name: "index_names_on_details_id"
+    t.index ["detail_id"], name: "index_names_on_detail_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -115,14 +115,14 @@ ActiveRecord::Schema.define(version: 2022_01_20_052118) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "ages", "details", column: "details_id"
+  add_foreign_key "ages", "details"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
-  add_foreign_key "contact_informations", "details", column: "details_id"
+  add_foreign_key "contact_informations", "details"
   add_foreign_key "details", "profiles"
-  add_foreign_key "genders", "details", column: "details_id"
-  add_foreign_key "locations", "details", column: "details_id"
-  add_foreign_key "names", "details", column: "details_id"
+  add_foreign_key "genders", "details"
+  add_foreign_key "locations", "details"
+  add_foreign_key "names", "details"
   add_foreign_key "posts", "users"
   add_foreign_key "profiles", "users"
 end
