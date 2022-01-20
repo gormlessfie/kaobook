@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_20_052118) do
+ActiveRecord::Schema.define(version: 2022_01_20_061708) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,14 @@ ActiveRecord::Schema.define(version: 2022_01_20_052118) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["detail_id"], name: "index_genders_on_detail_id"
+  end
+
+  create_table "like_counters", force: :cascade do |t|
+    t.integer "likes", default: 0, null: false
+    t.bigint "post_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_like_counters_on_post_id"
   end
 
   create_table "locations", force: :cascade do |t|
@@ -121,6 +129,7 @@ ActiveRecord::Schema.define(version: 2022_01_20_052118) do
   add_foreign_key "contact_informations", "details"
   add_foreign_key "details", "profiles"
   add_foreign_key "genders", "details"
+  add_foreign_key "like_counters", "posts"
   add_foreign_key "locations", "details"
   add_foreign_key "names", "details"
   add_foreign_key "posts", "users"
