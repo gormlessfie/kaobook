@@ -1,3 +1,3 @@
 class ContactInformation < ApplicationRecord
-  validates :phone_number, presence: true
+  validates :phone_number
 end
