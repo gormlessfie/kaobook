@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  describable: one
+  describable_type: Describable
+
+two:
+  describable: two
+  describable_type: Describable
