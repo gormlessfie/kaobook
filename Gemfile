@@ -26,6 +26,9 @@ gem 'jbuilder', '~> 2.7'
 # gem 'image_processing', '~> 1.2'
 
 gem 'devise', '~> 4.8', '>= 4.8.1'
+gem 'bulma-rails', '~> 0.9.2'
+gem 'font-awesome-sass', '~> 5.15', '>= 5.15.1'
+
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
