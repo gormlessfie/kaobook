@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_20_034334) do
+ActiveRecord::Schema.define(version: 2022_01_20_052118) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "ages", force: :cascade do |t|
+    t.integer "age", null: false
+    t.bigint "details_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["details_id"], name: "index_ages_on_details_id"
+  end
 
   create_table "comments", force: :cascade do |t|
     t.bigint "post_id", null: false
@@ -22,6 +30,14 @@ ActiveRecord::Schema.define(version: 2022_01_20_034334) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "contact_informations", force: :cascade do |t|
+    t.string "phone_number", default: "000-000-0000", null: false
+    t.bigint "details_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["details_id"], name: "index_contact_informations_on_details_id"
   end
 
   create_table "descriptions", force: :cascade do |t|
@@ -33,11 +49,54 @@ ActiveRecord::Schema.define(version: 2022_01_20_034334) do
     t.index ["describable_type", "describable_id"], name: "index_descriptions_on_describable"
   end
 
+  create_table "details", force: :cascade do |t|
+    t.bigint "profile_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["profile_id"], name: "index_details_on_profile_id"
+  end
+
+  create_table "genders", force: :cascade do |t|
+    t.string "gender", null: false
+    t.bigint "details_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["details_id"], name: "index_genders_on_details_id"
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string "address", default: "", null: false
+    t.string "city", default: "", null: false
+    t.string "state", default: "", null: false
+    t.string "country", default: "", null: false
+    t.integer "zip", default: 0, null: false
+    t.bigint "details_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["details_id"], name: "index_locations_on_details_id"
+  end
+
+  create_table "names", force: :cascade do |t|
+    t.string "fname", null: false
+    t.string "lname", null: false
+    t.bigint "details_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["details_id"], name: "index_names_on_details_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: falsew
+    t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -56,7 +115,14 @@ ActiveRecord::Schema.define(version: 2022_01_20_034334) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "ages", "details", column: "details_id"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
+  add_foreign_key "contact_informations", "details", column: "details_id"
+  add_foreign_key "details", "profiles"
+  add_foreign_key "genders", "details", column: "details_id"
+  add_foreign_key "locations", "details", column: "details_id"
+  add_foreign_key "names", "details", column: "details_id"
   add_foreign_key "posts", "users"
+  add_foreign_key "profiles", "users"
 end
