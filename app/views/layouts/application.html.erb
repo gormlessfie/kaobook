@@ -12,6 +12,7 @@
 
   <body>
     <%= render 'shared/navbar' %>
+
     <% flash.each do |type, msg| %>
       <%= type %>: <%= msg %>
     <% end %>

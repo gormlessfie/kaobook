@@ -10,6 +10,10 @@ Rails.application.routes.draw do
       root 'users/sessions#new', as: :unauthenticated_root
     end
   end
+
+  resources :posts, only: [:create, :destroy] do
+    resources :comments, only: [:create, :destroy]
+  end
   
   resources :users, only: [:index, :show] do
     resource :profile, only: [:show]

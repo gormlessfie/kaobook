@@ -1,6 +1,10 @@
 <nav class='navbar has-background-dark' role='navigation'>
   <div class='navbar-brand'>
-    <%= link_to 'Homepage', authenticated_root_path, class: 'navbar-item title is-3 has-text-white' %>
+    <% if user_signed_in? %>
+      <%= link_to 'Homepage', authenticated_root_path, class: 'navbar-item title is-3 has-text-white' %>
+    <% else %>
+      <%= link_to 'Homepage', unauthenticated_root_path, class: 'navbar-item title is-3 has-text-white' %>
+    <% end %>
   </div>
 
   <div class='navbar-menu'>

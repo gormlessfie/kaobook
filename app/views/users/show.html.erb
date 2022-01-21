@@ -1,3 +1,81 @@
-THIS IS LOGGED IN . THIS SHOULD AHVE TIMLINE
+<section class='section'>
+  <div class='container box'>
+    <h1 class='title is-4'>New post</h1>
+    <%= form_with model: @post do |f| %>
+      <div class='field'>
+        <div class='control'>
+          <%= f.text_area :body, class: 'textarea', placeholder: 'e.g. What are you thinking?' %>
+        </div>
+      </div>
 
-<%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'button' %>
+      <div class='actions'>
+        <%= f.submit 'Post', autofocus: true, class: 'button is-success is-outlined' %>
+      </div>
+    <% end %>
+  </div>
+</section>
+
+<section class='section'>
+  <div class='container mb-3'>
+    <h2 class='title is-4'>Your Timeline</h1>
+  </div>
+
+  <% @posts.each do |post| %>
+    <div class='container box' id="dropdown_post_<%=post.id %>">
+
+      <div class='dropdown is-hoverable'>
+        <div class='dropdown-trigger'>
+          <button class='button'>
+            <span class='icon is-small'><%= icon('fas', 'ellipsis-v') %></span>
+          </button>
+        </div>
+
+        <div class='dropdown-menu'>
+          <div class='dropdown-content'>
+            <div class='dropdown-item'>
+              <%= link_to 'Delete post', post_path(post), method: :delete, class: 'button is-danger' %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class='section'>
+
+        <p><%= post.body %></p>
+      </section>
+
+      <section class='section'>
+        <% if post.comments.empty? %>
+          <h3 class='title is-6'>No comments</h3>
+        <% else %>
+          <h3 class='title is-6'>Comments</h3>
+
+          <% post.comments.each do |comment| %>
+            <div class= 'container box'>
+              <p><%=comment.user.email %>: <%= comment.body %></p>
+              <%= link_to 'delete', post_comment_path(post, comment), method: :delete, class: 'button is-danger is-small is-outlined' %>
+            </div>
+          <% end %>
+        <% end %>
+      </section>
+
+      <section class='section'>
+        <div class='container'>
+          <h3 class='title is-6'>Post a comment</h3>
+
+          <%= form_with model: @comment, url: post_comments_path(post) do |f| %>
+            <div class='field'>
+              <div class='control'>
+                <%= f.text_area :body, class: 'textarea', placeholder: 'Comment here' %>
+              </div>
+            </div>
+
+            <div class='action'>
+              <%= f.submit 'Comment', class: 'button is-primary is-outlined' %>
+            </div>
+          <% end %>
+        </div>
+      </section>
+    </div>
+  <% end %>
+</section>

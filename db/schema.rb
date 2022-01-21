@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2022_01_20_232210) do
   end
 
   create_table "comments", force: :cascade do |t|
+    t.string "body", null: false
     t.bigint "post_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -38,15 +39,6 @@ ActiveRecord::Schema.define(version: 2022_01_20_232210) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["detail_id"], name: "index_contact_informations_on_detail_id"
-  end
-
-  create_table "descriptions", force: :cascade do |t|
-    t.string "body", default: "", null: false
-    t.string "describable_type", null: false
-    t.bigint "describable_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["describable_type", "describable_id"], name: "index_descriptions_on_describable"
   end
 
   create_table "details", force: :cascade do |t|
@@ -94,6 +86,7 @@ ActiveRecord::Schema.define(version: 2022_01_20_232210) do
   end
 
   create_table "posts", force: :cascade do |t|
+    t.string "body", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
