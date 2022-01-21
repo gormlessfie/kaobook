@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2022_01_20_232210) do
   enable_extension "plpgsql"
 
   create_table "ages", force: :cascade do |t|
-    t.integer "age"
+    t.date "dob"
     t.bigint "detail_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 2022_01_20_232210) do
     t.string "city", default: ""
     t.string "state", default: ""
     t.string "country", default: ""
-    t.integer "zip", default: 0
+    t.string "zip", default: ""
     t.bigint "detail_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

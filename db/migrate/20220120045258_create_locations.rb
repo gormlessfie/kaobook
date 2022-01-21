@@ -5,7 +5,7 @@ class CreateLocations < ActiveRecord::Migration[6.1]
       t.string :city, default: ''
       t.string :state, default: ''
       t.string :country, default: ''
-      t.integer :zip, default: 00000
+      t.string :zip, default: ''
       t.references :detail, null: false, foreign_key: true
       t.timestamps
     end
