@@ -22,18 +22,26 @@
 
   <% @posts.each do |post| %>
     <div class='container box' id="dropdown_post_<%=post.id %>">
-
-      <div class='dropdown is-hoverable'>
-        <div class='dropdown-trigger'>
-          <button class='button'>
-            <span class='icon is-small'><%= icon('fas', 'ellipsis-v') %></span>
-          </button>
+      <div class=columns>
+        <div class='column is-11'>
+          <span>PROFILE PICTURE : NAME OF POSTER </span><br>
+          <span>DATE OF POST</span>
         </div>
 
-        <div class='dropdown-menu'>
-          <div class='dropdown-content'>
-            <div class='dropdown-item'>
-              <%= link_to 'Delete post', post_path(post), method: :delete, class: 'button is-danger' %>
+        <div class='column is-1'>
+          <div class='dropdown is-hoverable is-right'>
+            <div class='dropdown-trigger'>
+              <button class='button is-inverted'>
+                <span class='icon is-small'><%= icon('fas', 'ellipsis-v') %></span>
+              </button>
+            </div>
+
+            <div class='dropdown-menu'>
+              <div class='dropdown-content'>
+                <div class='dropdown-item'>
+                  <%= link_to 'Delete post', post_path(post), method: :delete, class: 'button is-danger is-inverted' %>
+                </div>
+              </div>
             </div>
           </div>
         </div>
