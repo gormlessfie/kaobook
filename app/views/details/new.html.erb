@@ -1,19 +1,25 @@
 <%= form_with model: @detail, url: user_detail_path(current_user) do |form| %>
-  <h1 class='title is-1'>Personal Information</h1>
+  <section class='section'>
+    <div class='column is-5 container box'>
+      <h1 class='title is-1'>Personal Information</h1>
 
-  <%= render 'name', f: form %>
+      <%= render 'name', f: form %>
 
-  <%= render 'age', f: form %>
+      <%= render 'age', f: form %>
 
-  <%= render 'gender', f: form %>
+      <%= render 'gender', f: form %>
+    </div>
 
-  <h1 class='title is-1'>Contact information</h1>
+    <div class='column is-5 container box'>
+      <h1 class='title is-1'>Contact information</h1>
 
-  <%= render 'contact_information', f: form %>
+      <%= render 'contact_information', f: form %>
 
-  <%= render 'location', f: form %>
+      <%= render 'location', f: form %>
 
-  <div class='actions'>
-    <%= form.submit 'Enter', class: 'button is-primary is-outlined' %>
-  </div>
+      <div class='actions'>
+        <%= form.submit 'Enter', class: 'button is-primary is-outlined' %>
+      </div>
+    </div>
+  </section>
 <% end %>

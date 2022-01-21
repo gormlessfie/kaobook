@@ -1,9 +1,9 @@
 <%= f.fields_for :age do |age_f| %>
   <div class='field'>
-    <%= age_f.label :age, 'Age' %>
+    <%= age_f.label :dob, 'Age' %>
 
     <div class='control'>
-      <%= age_f.number_field :age, in: 1..120, step: 1, class: 'input' %>
+      <%= age_f.date_field :dob, class: 'input' %>
     </div>
   </div>
 <% end %>
