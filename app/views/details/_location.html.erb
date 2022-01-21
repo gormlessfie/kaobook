@@ -1,0 +1,41 @@
+<%= f.fields_for :location do |location_f| %>
+  <div class='field'>
+    <%= location_f.label :address %>
+
+    <div class='control'>
+      <%= location_f.text_field :address, class: 'input' %>
+    </div>
+  </div>
+
+  <div class='field'>
+    <%= location_f.label :state %>
+
+    <div class='control'>
+      <%= location_f.text_field :state, class: 'input' %>
+    </div>
+  </div>
+
+  <div class='field'>
+    <%= location_f.label :city %>
+
+    <div class='control'>
+      <%= location_f.text_field :city, class: 'input' %>
+    </div>
+  </div>
+
+  <div class='field'>
+    <%= location_f.label :country %>
+
+    <div class='control'>
+      <%= location_f.text_field :country, class: 'input' %>
+    </div>
+  </div>
+
+  <div class='field'>
+    <%= location_f.label :zip, 'Zip code' %>
+
+    <div class='control'>
+      <%= location_f.number_field :zip, class: 'input' %>
+    </div>
+  </div>
+<% end %>

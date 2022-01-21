@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   end
   
   resources :users, only: [:index] do
-    resource :profile
+    resource :profile, only: [:show]
+    resource :detail, only: [:new, :create, :edit, :update]
   end
 end

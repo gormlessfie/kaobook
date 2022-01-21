@@ -6,4 +6,10 @@ class Detail < ApplicationRecord
   has_one :contact_information, dependent: :destroy
   has_one :gender, dependent: :destroy
   has_one :name, dependent: :destroy
+
+  accepts_nested_attributes_for :location
+  accepts_nested_attributes_for :age
+  accepts_nested_attributes_for :contact_information
+  accepts_nested_attributes_for :gender
+  accepts_nested_attributes_for :name
 end

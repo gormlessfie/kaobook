@@ -1,0 +1,9 @@
+<%= f.fields_for :contact_information do |ci_f| %>
+  <div class='field'>
+    <%= ci_f.label :phone_number, 'Phone Number' %>
+
+    <div class='control'>
+      <%= ci_f.telephone_field :phone_number, class: 'input' %>
+    </div>
+  </div>
+<% end %>

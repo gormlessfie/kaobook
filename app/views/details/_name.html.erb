@@ -1,0 +1,17 @@
+<%= f.fields_for :name do |name_f| %>
+  <div class='field'>
+    <%= name_f.label :fname, 'First name' %>
+
+    <div class='control'>
+      <%= name_f.text_field :fname, class: 'input' %>
+    </div>
+  </div>
+
+  <div class='field'>
+    <%= name_f.label :lname, 'Last name' %>
+
+    <div class='control'>
+      <%= name_f.text_field :lname, class: 'input' %>
+    </div>
+  </div>
+<% end %>

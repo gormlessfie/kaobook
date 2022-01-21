@@ -1,0 +1,9 @@
+<%= f.fields_for :gender do |gender_f| %>
+  <div class='field'>
+    <%= gender_f.label :gender, 'Gender' %><br>
+
+    <div class='control select'>
+      <%= gender_f.select :gender, ['male', 'female', 'non-binary', 'other'] %>
+    </div>
+  </div>
+<% end %>

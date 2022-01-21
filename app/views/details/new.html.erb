@@ -1,0 +1,14 @@
+<%= form_with model: @detail, url: user_detail_path(current_user) do |form| %>
+
+  <%= render 'name', f: form %>
+
+  <%= render 'age', f: form %>
+
+  <%= render 'gender', f: form %>
+
+  <%= render 'contact_information', f: form %>
+
+  <div class='actions'>
+    <%= form.submit 'Enter', class: 'button is-primary is-outlined' %>
+  </div>
+<% end %>

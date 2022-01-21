@@ -1,13 +1,15 @@
 <section class='section'>
   <div class='column is-4 container box mt-6'>
+
     <div class='block'>
       <h2 class='title is-1'>Sign up</h2>
     </div>
+
     <div class='block'>
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
 
-        <div class='block'>
+        <div class='field'>
           <%= f.label :email %><br />
 
           <div class='control'>
@@ -15,7 +17,7 @@
           </div>
         </div>
 
-        <div class='block'>
+        <div class='field'>
           <%= f.label :password %>
           <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> characters minimum)</em>
@@ -26,7 +28,7 @@
           </div>
         </div>
 
-        <div class='block'>
+        <div class='field'>
           <%= f.label :password_confirmation %><br />
 
           <div class='control'>
@@ -34,7 +36,7 @@
           </div>
         </div>
 
-        <div class="block actions">
+        <div class="actions">
           <div class='control'>
             <%= f.submit "Sign up", class: 'button is-primary' %>
           </div>
@@ -45,5 +47,6 @@
     <div class='block'>
       <%= render "devise/shared/links" %>
     </div>
+    
   </div>
 </section>
