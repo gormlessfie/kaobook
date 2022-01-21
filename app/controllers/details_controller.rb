@@ -11,6 +11,14 @@ class DetailsController < ApplicationController
   end
 
   def create
+    @user = current_user
+    @detail = @user.profile.build_detail(detail_params)
+
+    if @detail.save
+      redirect_to user_path(current_user)
+    else
+      render :new
+    end
   end
 
   private
