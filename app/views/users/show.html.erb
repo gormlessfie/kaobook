@@ -52,7 +52,12 @@
         <p><%= post.body %></p>
       </section>
       
-      <div>Like SECTIONs</div>
+      <div>
+        Likes: <%= post.likes.size %>
+        <%= button_to post_likes_path(post), class: 'button is-info is-outlined' do %>
+          <span class='icon'><%= icon('far', 'fa-thumbs-up') %></span> Like
+        <% end%>
+      </div>
 
       <section class='section'>
         <% if post.comments.empty? %>
