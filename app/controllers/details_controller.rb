@@ -21,10 +21,32 @@ class DetailsController < ApplicationController
     end
   end
 
+  def edit
+    @user = current_user
+    @detail = current_user.profile.detail
+  end
+
+  def update
+    @user = current_user
+    @detail = current_user.profile.detail
+
+    if @detail.update(detail_params)
+      flash[:success] = 'Profile information updated successfully.'
+      redirect_to user_path(current_user)
+    else
+      flash[:error] = 'There are some errors'
+      render :edit
+    end
+  end
+
   private
 
   def detail_params
     # name age contact information location gender
-    params.require(:detail).permit()
+    params.require(:detail).permit(name_attributes: [:fname, :lname],
+                                   age_attributes: [:dob],
+                                   gender_attributes: [:gender],
+                                   contact_information_attributes: [:phone_number],
+                                   location_attributes: [:address, :state, :city, :country, :zip])
   end
 end
