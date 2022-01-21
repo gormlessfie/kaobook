@@ -53,13 +53,18 @@
       </section>
       
       <div>
-        Likes: <%= post.likes.size %>
-        <%= button_to post_likes_path(post), class: 'button is-info is-outlined' do %>
-          <span class='icon'><%= icon('far', 'fa-thumbs-up') %></span> Like
-        <% end%>
+        <% if post.liked?(current_user) %>
+          <%= button_to post_like_path(post, post.likes.find{|like| like.user_id == current_user.id}), method: :delete, class: 'button is-danger is-outlined' do %>
+            <%= icon('far', 'thumbs-up') %>&nbsp;&nbsp;<%= post.likes.size %>
+          <% end%>
+        <% else %>
+          <%= button_to post_likes_path(post), class: 'button is-info is-outlined' do %>
+            <%= icon('far', 'thumbs-up') %>&nbsp;&nbsp;<%= post.likes.size %>
+          <% end%>
+        <% end %>
       </div>
 
-      <section class='section'>
+      <section class='section p-1'>
         <% if post.comments.empty? %>
           <h3 class='title is-6'>No comments</h3>
         <% else %>

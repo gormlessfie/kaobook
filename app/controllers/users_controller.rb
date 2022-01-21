@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     current_user ? @user = current_user : @user = User.find(params[:id])
 
     @post = Post.new
-    @posts = @user.posts.includes(:comments)
+    @posts = @user.posts.includes(:comments, :likes, :user)
     
     @comment = Comment.new
   end
