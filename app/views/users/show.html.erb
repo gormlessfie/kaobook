@@ -24,8 +24,8 @@
     <div class='container box' id="dropdown_post_<%=post.id %>">
       <div class=columns>
         <div class='column is-11'>
-          <span>PROFILE PICTURE : NAME OF POSTER </span><br>
-          <span>DATE OF POST</span>
+          <span>PROFILE PICTURE : <%= post.user.email %> </span><br>
+          <span><%= post.created_at %></span>
         </div>
 
         <div class='column is-1'>
