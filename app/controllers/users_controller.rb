@@ -4,11 +4,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    current_user ? @user = current_user : @user = User.find(params[:id])
-
-    @post = Post.new
-    @posts = @user.posts.includes(:comments, :likes, :user)
-    
-    @comment = Comment.new
+    # profile
   end
 end

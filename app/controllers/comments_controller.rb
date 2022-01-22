@@ -5,17 +5,17 @@ class CommentsController < ApplicationController
 
     if @comment.save
       flash[:success] = 'Comment posted.'
-      redirect_to user_path(current_user)
+      redirect_to request.referer
     else
       flash[:error] = 'There was an error posting the comment.'
-      redirect_to user_path(current_user)
+      redirect_to request.referer
     end
   end
 
   def destroy
     @comment = Comment.find(params[:id])
     @user = @comment.post.user
-    redirect_to user_path(@user)
+    redirect_to request.referer
     @comment.destroy
   end
 

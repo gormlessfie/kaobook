@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   
   devise_scope :user do
     authenticated :user do
-      root 'users#show', as: :authenticated_root
+      root 'posts#index', as: :authenticated_root
     end
 
     unauthenticated :user do
@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :posts, only: [:create, :destroy] do
+  resources :posts, only: [:index, :create, :destroy] do
     resources :comments, only: [:create, :destroy]
     resources :likes, only: [:create, :destroy]
   end

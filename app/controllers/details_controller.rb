@@ -15,7 +15,7 @@ class DetailsController < ApplicationController
     @detail = @user.profile.build_detail(detail_params)
 
     if @detail.save
-      redirect_to user_path(current_user)
+      redirect_to posts_path
     else
       render :new
     end
@@ -32,7 +32,7 @@ class DetailsController < ApplicationController
 
     if @detail.update(detail_params)
       flash[:success] = 'Profile information updated successfully.'
-      redirect_to user_path(current_user)
+      redirect_to request.referer
     else
       flash[:error] = 'There are some errors'
       render :edit
