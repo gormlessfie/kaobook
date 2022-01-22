@@ -1,0 +1,14 @@
+<% list.each do |user| %>
+  <div class='container box'>
+    <div class='columns'>
+      <div class='column is-9'>
+        PROFILE PICTURE
+        <%= user.username %><br>
+      </div>
+
+      <div class='column is-3'>
+        <%= render 'buttons', user: user%>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,15 @@
+<div class='field is-grouped'>
+  <%= link_to user_path(user), class: 'button is-info is-rounded mr-3' do %>
+    <%= icon('fas', 'user') %>&nbsp;&nbsp;Profile
+  <% end %>
+  
+  <% if current_user.sent_invitation?(current_user, user) %>
+    <%= button_to friendships_path, class: 'button is-info is-rounded', disabled: true, params: { friend: user } do %>
+      <%= icon('fas', 'user-plus') %>&nbsp;&nbsp;Add Friend
+    <% end %>
+  <% else %>
+    <%= button_to friendships_path, class: 'button is-info is-rounded', params: { friend: user } do %>
+      <%= icon('fas', 'user-plus') %>&nbsp;&nbsp;Add Friend
+    <% end %>
+  <% end %>
+</div>

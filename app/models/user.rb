@@ -12,4 +12,9 @@ class User < ApplicationRecord
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships, source: :friend
   has_one :profile, dependent: :destroy
+
+  def sent_invitation?(user, friend)
+    !!self.friendships.find{ |invite| invite.user_id == user.id &&
+                                        invite.friend_id == friend.id }
+  end
 end

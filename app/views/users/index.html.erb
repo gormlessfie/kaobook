@@ -11,47 +11,9 @@
 
   <div class='block'>
     <% if params[:query] %>
-      <% @result.each do |user| %>
-        <div class='container box'>
-          <div class='columns'>
-            <div class='column is-9'>
-              PROFILE PICTURE
-              <%= user.username %><br>
-            </div>
-            <div class='column is-3'>
-              <div class='field is-grouped'>
-                <%= link_to user_path(user), class: 'button is-info is-rounded mr-3' do %>
-                  <%= icon('fas', 'user') %>&nbsp;&nbsp;Profile
-                <% end %>
-                <%= link_to user_path(user), class: 'button is-info is-rounded' do %>
-                  <%= icon('fas', 'user-plus') %>&nbsp;&nbsp;Add Friend
-                <% end %>
-              </div>
-            </div>
-          </div>
-        </div>
-      <% end %>
+      <%= render 'list_users', list: @result %>
     <% else%>
-      <% @users.each do |user| %>
-        <div class='container box'>
-          <div class='columns'>
-            <div class='column is-9'>
-              PROFILE PICTURE
-              <%= user.username %><br>
-            </div>
-            <div class='column is-3'>
-              <div class='field is-grouped'>
-                <%= link_to user_path(user), class: 'button is-info is-rounded mr-3' do %>
-                  <%= icon('fas', 'user') %>&nbsp;&nbsp;Profile
-                <% end %>
-                <%= link_to user_path(user), class: 'button is-info is-rounded' do %>
-                  <%= icon('fas', 'user-plus') %>&nbsp;&nbsp;Add Friend
-                <% end %>
-              </div>
-            </div>
-          </div>
-        </div>
-      <% end %>
+      <%= render 'list_users', list: @users %>
     <% end %>
   </div>
 </section>
