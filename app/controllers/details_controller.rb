@@ -32,7 +32,7 @@ class DetailsController < ApplicationController
 
     if @detail.update(detail_params)
       flash[:success] = 'Profile information updated successfully.'
-      redirect_to request.referer
+      redirect_to user_path(@user)
     else
       flash[:error] = 'There are some errors'
       render :edit

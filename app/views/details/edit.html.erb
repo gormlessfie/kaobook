@@ -1,0 +1,25 @@
+<%= form_with model: @detail, url: user_detail_path(current_user), method: :put do |form| %>
+  <section class='section'>
+    <div class='column is-5 container box'>
+      <h1 class='title is-1'>Edit Personal Information</h1>
+
+      <%= render 'name', f: form %>
+
+      <%= render 'age', f: form %>
+
+      <%= render 'gender', f: form %>
+    </div>
+
+    <div class='column is-5 container box'>
+      <h1 class='title is-1'>Contact information</h1>
+
+      <%= render 'contact_information', f: form %>
+
+      <%= render 'location', f: form %>
+
+      <div class='columns actions'>
+        <span class='column'><%= form.submit 'Enter', autofocus: true, class: 'button is-primary is-outlined' %></span>
+      </div>
+    </div>
+  </section>
+<% end %>

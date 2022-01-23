@@ -1,2 +1,14 @@
-<h1>Profiles#show</h1>
-<p>Find me in app/views/profiles/show.html.erb</p>
+<h1 class='title is-1'><%= @profile.user.username %></h1>
+
+Name: <%= @profile.detail.name.fname %> <%= @profile.detail.name.lname %><br>
+Gender : <%= @profile.detail.gender.gender %><br>
+Age: <%= @profile.detail.age.dob %><br>
+
+Country: <%= @profile.detail.location.country %><br>
+State: <%= @profile.detail.location.state %><br>
+Address: <%= @profile.detail.location.address %><br>
+Zip code: <%= @profile.detail.location.zip %><br>
+
+Phone Number: <%= @profile.detail.contact_information.phone_number %><br>
+
+<%= link_to 'Edit profile', edit_user_detail_path(current_user), class: 'button' %>
