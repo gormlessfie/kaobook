@@ -5,5 +5,5 @@ class Location < ApplicationRecord
   validates :state, length: { maximum: 50 }
   validates :city, length: { maximum: 50 }
   validates :country, length: { maximum: 50 }
-  validates :zip, length: { maximum: 10 }, numericality: { only_integer: true }
+  validates :zip, length: { maximum: 10 }
 end
