@@ -13,6 +13,10 @@
  *= require_tree .
  *= require_self
  */
+
+$dropdown-menu-min-width: 20rem;
+
 @import 'bulma';
 @import "font-awesome-sprockets";
 @import "font-awesome";
+

@@ -1,4 +1,5 @@
 <% list.each do |user| %>
+  <% next if current_user == user %>
   <div class='container box'>
     <div class='columns'>
       <div class='column is-9'>
@@ -7,7 +8,7 @@
       </div>
 
       <div class='column is-3'>
-        <%= render 'buttons', user: user%>
+        <%= render 'buttons', user: user %>
       </div>
     </div>
   </div>

@@ -1,0 +1,45 @@
+<div class='dropdown is-right is-hoverable'>
+  <div class='dropdown-trigger'>
+    <button class='button has-background-dark has-text-white'>
+      <span>Notifications</span>
+    </button>
+  </div>
+
+  <div class='dropdown-menu' id='dropdown-menu'>
+    <div class='dropdown-content'>
+      <% if @requests.empty? %>
+        <div class='dropdown-item'>
+          <div>
+            <span class='subtitle is-6'>No incoming friend requests</span>
+          </div>
+        </div>
+      <% else %>
+        <% @requests.each do |request| %>
+          <div class='dropdown-item'>
+            <div class='columns'>
+              <div class='column is-8'>
+                <span class='subtitle is-6'><strong><%= request.user.username %></strong> wants to be your friend.</span>
+              </div>
+
+              <div class='column is-4'>
+                <div class='field is-grouped'>
+                  <%= button_to friendship_path(request), method: :put, class: 'button is-small is-success' do %>
+                    <span class='icon'><%= icon('fas', 'check') %></span>
+                  <% end %>
+
+                  &nbsp;&nbsp;
+
+                  <%= button_to friendship_path(request), method: :delete, class: 'button is-small is-danger' do %>
+                    <span class='icon'><%= icon('fas', 'times') %></span>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr class='dropdown-divider'>
+        <% end %>
+      <% end %>
+    </div>
+
+  </div>
+</div>

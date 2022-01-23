@@ -21,7 +21,7 @@
   </div>
 
   <% @posts.each do |post| %>
-    <div class='container box' id="dropdown_post_<%=post.id %>">
+    <div class='container box' id="dropdown_post_<%= post.id %>">
       <div class=columns>
         <div class='column is-11'>
           <span>PROFILE PICTURE : <%= post.user.username %> </span><br>
