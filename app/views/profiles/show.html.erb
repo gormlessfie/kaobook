@@ -1,14 +1,48 @@
-<h1 class='title is-1'><%= @profile.user.username %></h1>
+<section class='section'>
+  <div class='container box'>
 
-Name: <%= @profile.detail.name.fname %> <%= @profile.detail.name.lname %><br>
-Gender : <%= @profile.detail.gender.gender %><br>
-Age: <%= @profile.detail.age.dob %><br>
+    <h1 class='title is-1'>Personal Information</h1>
 
-Country: <%= @profile.detail.location.country %><br>
-State: <%= @profile.detail.location.state %><br>
-Address: <%= @profile.detail.location.address %><br>
-Zip code: <%= @profile.detail.location.zip %><br>
+    <div class='columns'>
+      <span class='column is-8'><strong>Name</strong></span>
+      <span class='column'><%= @profile.detail.name.fname %> <%= @profile.detail.name.lname %></span>
+    </div>
 
-Phone Number: <%= @profile.detail.contact_information.phone_number %><br>
+    <div class='columns'>
+      <span class='column is-8'><strong>Age</strong></span>
+      <span class='column'><%= @profile.detail.age.dob %></span>
+    </div>
 
-<%= link_to 'Edit profile', edit_user_detail_path(current_user), class: 'button' %>
+    <div class='columns'>
+      <span class='column is-8'><strong>Gender</strong></span>
+      <span class='column'><%= @profile.detail.gender.gender %><br></span>
+    </div>
+
+    <div class='columns'>
+      <span class='column is-8'><strong>Country</strong></span>
+      <span class='column'><%= @profile.detail.location.country %></span>
+    </div>
+
+    <div class='columns'>
+      <span class='column is-8'><strong>State</strong></span>
+      <span class='column'><%= @profile.detail.location.state %></span>
+    </div>
+
+    <div class='columns'>
+      <span class='column is-8'><strong>Address</strong></span>
+      <span class='column'><%= @profile.detail.location.address %></span>
+    </div>
+
+    <div class='columns'>
+      <span class='column is-8'><strong>Zip code</strong></span>
+      <span class='column'><%= @profile.detail.location.zip %></span>
+    </div>
+
+    <div class='columns'>
+      <span class='column is-8'><strong>Phone Number</strong></span>
+      <span class='column'><%= @profile.detail.contact_information.phone_number %></span>
+    </div>
+
+    <%= link_to 'Edit profile', edit_user_detail_path(current_user), class: 'button' %>
+  </div>
+</section>
