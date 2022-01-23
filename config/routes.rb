@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resources :friendships, only: [:create, :destroy, :update]
   
   resources :users, only: [:index, :show] do
-    resource :profile, only: [:show]
+    resource :profile, only: [:show, :update]
     resource :detail, only: [:new, :create, :edit, :update]
   end
 end
