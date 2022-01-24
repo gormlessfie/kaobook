@@ -1,0 +1,12 @@
+USER SHOW PAGE.
+
+THIS IS THEIR OWN PERSONAL SHOW PAGE.
+
+MEDIA CARD
+
+POSTS ACRDS OR SOMETHING
+IDK
+
+<%= @posts.each do |post| %>
+  <%= post.user.username %>: <%= post.body %><br>
+<% end %>

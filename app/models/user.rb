@@ -24,7 +24,7 @@ class User < ApplicationRecord
   end
 
   def receive_invitation?(user, friend)
-    !!self.inverse_friendships.find { |invite| invite.friend_id == user.id }
+    !!self.inverse_friendships.find { |invite| invite.friend_id == user.id && invite.active == false }
   end
 
   def friend?(user, friend)
