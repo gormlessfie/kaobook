@@ -4,8 +4,21 @@
     <h1 class='title is-1'>Personal Information</h1>
     
     <div class='container box'>
-      <span class='title is-3'>Profile Picture</span>
-      <%= render 'profile_pic_upload' %>
+      <div class='block'>
+        <% if current_user.profile.avatar.attached? %>
+          <%= image_tag(current_user.profile.avatar.variant(resize: '100x100'), size: '100') %>
+        <% else %>
+          <%= image_tag 'unknown.jpeg' %>
+        <% end %>
+      </div>
+
+      <div class='block'>
+        <span class='title is-3'>Profile Picture</span>
+      </div>
+
+      <div class='block'>
+        <%= render 'profile_pic_upload' %>
+      </div>
     </div>
 
     <%= render 'list_information' %>
