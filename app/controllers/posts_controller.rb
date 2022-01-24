@@ -3,10 +3,9 @@ class PostsController < ApplicationController
 
   def index
     @user = current_user
-
-    @post = Post.new
     @posts = @user.posts.includes(:comments, :likes, :user)
     
+    @post = Post.new
     @comment = Comment.new
   end
 

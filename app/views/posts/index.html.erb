@@ -26,7 +26,11 @@
         <div class='column is-11'>
           <div class='columns'>
             <span class='column is-1'>
-              <%= image_tag(post.user.profile.avatar.variant(resize: '100x100'), size: '100') %>
+              <% if post.user.profile.avatar.attached? %>
+                <%= image_tag(post.user.profile.avatar.variant(resize: '100x100'), size: '100') %>
+              <% else %>
+                <%= image_tag 'unknown.jpeg', size: '100' %>
+              <% end %>
             </span>
 
             <span class='column is-11'>
