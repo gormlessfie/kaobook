@@ -1,0 +1,9 @@
+<%= form_with model: @profile, url: user_profile_path(current_user), method: :put do |f| %>
+  <div class='field'>
+    <%= f.file_field :avatar %>
+  </div>
+
+  <div class='field actions'>
+    <%= f.submit 'Upload', class: 'button is-info is-outlined' %>
+  </div>
+<% end %>
