@@ -1,7 +1,10 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all.order(username: :asc).includes(:friendships, :inverse_friendships)
-    @result = User.where('username LIKE ?', "%#{params[:query]}%").order(username: :asc).includes(:friendships, :inverse_friendships) if params[:query]
+    @users = User.all.order(username: :asc)
+      .includes(:pending_friendships, :inverse_pending_friendships)
+
+    @result = User.where('username LIKE ?', "%#{params[:query]}%")
+      .order(username: :asc).includes(:pending_friendships, :inverse_pending_friendships) if params[:query]
   end
 
   def show

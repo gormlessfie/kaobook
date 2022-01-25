@@ -8,8 +8,8 @@
       <%= icon('fas', 'user-plus') %>&nbsp;&nbsp;Add Friend
     <% end %>
   
-  <% elsif current_user.receive_invitation?(current_user, user) && current_user.inverse_friendships.where(user: user, friend: current_user).exists? %>
-    <%= button_to friendship_path(current_user.inverse_friendships.where(user: user, friend: current_user).first),
+  <% elsif current_user.receive_invitation?(current_user, user) && current_user.inverse_pending_friendships.where(user: user, friend: current_user).exists? %>
+    <%= button_to friendship_path(current_user.inverse_pending_friendships.where(user: user, friend: current_user).first),
                    method: :put, class: 'button is-success is-rounded' do %>
       <%= icon('fas', 'user-plus') %>&nbsp;&nbsp;Accept request
     <% end %>
