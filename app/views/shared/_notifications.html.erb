@@ -5,7 +5,7 @@
     </button>
   </div>
 
-  <div class='dropdown-menu' id='dropdown-menu'>
+  <div class='dropdown-menu nav-dropdown' id='dropdown-menu'>
     <div class='dropdown-content'>
       <% if @requests.empty? %>
         <div class='dropdown-item'>
@@ -17,12 +17,12 @@
         <% @requests.each do |request| %>
           <div class='dropdown-item'>
             <div class='columns'>
-              <div class='column is-8'>
+              <div class='column'>
                 <span class='subtitle is-6'><strong><%= request.user.username %></strong> wants to be your friend.</span>
               </div>
 
-              <div class='column is-4'>
-                <div class='field is-grouped'>
+              <div class='column is-narrow'>
+                <div class='field is-grouped '>
                   <%= button_to friendship_path(request), method: :put, class: 'button is-small is-success' do %>
                     <span class='icon'><%= icon('fas', 'check') %></span>
                   <% end %>

@@ -1,10 +1,30 @@
 <% list.each do |user| %>
   <% next if current_user == user %>
+
   <div class='container box'>
     <div class='columns is-vcentered is-mobile' id='pbox'>
       <div class='column'>
-        PROFILE PICTURE
-        <%= user.username %><br>
+        <div class='columns is-vcentered is-mobile'>
+          <div class='column is-narrow'>
+            <% if user.profile.avatar.attached? %>
+              <%= image_tag user.profile.avatar.variant(resize: '80x80'), size: '80' %>
+            <% else %>
+              <%= image_tag 'unknown.jpeg', size: '80' %>
+            <% end %>
+          </div>
+          <div class='column is-narrow'>
+            <h2 class='subtitle is-4 mb-0'>
+              <strong>
+                <%= user.profile.detail.name.fname %>
+                <%= user.profile.detail.name.lname %>
+              </strong>
+            </h2>
+
+            <h3 class='subtitle is-6'>
+              @<%= user.username %>
+            </h3>
+          </div>
+        </div>
       </div>
 
       <div class='column is-narrow'>
