@@ -1,19 +1,5 @@
-<section class='section'>
-  <div class='container box'>
-    <h1 class='title is-4'>New post</h1>
-    <%= form_with model: @post do |f| %>
-      <div class='field'>
-        <div class='control'>
-          <%= f.text_area :body, class: 'textarea', placeholder: 'e.g. What are you thinking?' %>
-        </div>
-      </div>
-
-      <div class='actions'>
-        <%= f.submit 'Post', autofocus: true, class: 'button is-success is-outlined' %>
-      </div>
-    <% end %>
-  </div>
-</section>
+<%# Create a post section %>
+<%= render 'shared/posts/create_post', post: @post %>
 
 <section class='section'>
   <div class='container mb-3'>
@@ -23,41 +9,9 @@
   <% @posts.each do |post| %>
     <div class='container box' id="dropdown_post_<%= post.id %>">
       <div class=columns>
-        <div class='column is-11'>
-          <div class='columns'>
-            <span class='column is-1'>
-              <% if post.user.profile.avatar.attached? %>
-                <%= image_tag(post.user.profile.avatar.variant(resize: '100x100'), size: '100') %>
-              <% else %>
-                <%= image_tag 'unknown.jpeg', size: '100' %>
-              <% end %>
-            </span>
+        <%= render 'shared/posts/post_user_details', post: post %>
 
-            <span class='column is-11'>
-              <h2 class='title is-3 mb-0 '><%= current_user.profile.detail.name.fname %> <%= current_user.profile.detail.name.lname %></h2>
-              <p class='subtitle is-6 mt-0 mb-0'>@<%= current_user.username %></p>
-              <span>posted on: <%= post.created_at.to_formatted_s(:long) %></span>
-            </span>
-          </div>
-        </div>
-
-        <div class='column is-1'>
-          <div class='dropdown is-hoverable is-right'>
-            <div class='dropdown-trigger'>
-              <button class='button is-inverted'>
-                <span class='icon is-small'><%= icon('fas', 'ellipsis-v') %></span>
-              </button>
-            </div>
-
-            <div class='dropdown-menu'>
-              <div class='dropdown-content'>
-                <div class='dropdown-item'>
-                  <%= link_to 'Delete post', post_path(post), method: :delete, class: 'button is-danger is-inverted' %>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <%= render 'shared/posts/post_dropdown', post: post %>
       </div>
 
       <section class='section'>
@@ -68,52 +22,13 @@
       
       <section class='section'>
         <div class='container'>
-          <div class='block'>
-            <% if post.liked?(current_user) %>
-              <%= button_to post_like_path(post, post.likes.find{|like| like.user_id == current_user.id}), method: :delete, class: 'button is-danger is-outlined' do %>
-                <%= icon('far', 'thumbs-up') %>&nbsp;&nbsp;<%= post.likes.size %>
-              <% end%>
-            <% else %>
-              <%= button_to post_likes_path(post), class: 'button is-info is-outlined' do %>
-                <%= icon('far', 'thumbs-up') %>&nbsp;&nbsp;<%= post.likes.size %>
-              <% end%>
-            <% end %>
-          </div>
+          <%= render 'shared/posts/post_likes', post: post %>
 
-          <div class='block'>
-            <% if post.comments.empty? %>
-              <h3 class='title is-6'>No comments</h3>
-            <% else %>
-              <h3 class='title is-6'>Comments</h3>
-
-              <% post.comments.each do |comment| %>
-                <div class= 'container box'>
-                  <p><%=comment.user.email %>: <%= comment.body %></p>
-                  <%= link_to 'delete', post_comment_path(post, comment), method: :delete, class: 'button is-danger is-small is-outlined' %>
-                </div>
-              <% end %>
-            <% end %>
-          </div>
+          <%= render 'shared/posts/post_comments', post: post %>
         </div>
       </section>
 
-      <section class='section'>
-        <div class='container'>
-          <h3 class='title is-6'>Post a comment</h3>
-
-          <%= form_with model: @comment, url: post_comments_path(post) do |f| %>
-            <div class='field'>
-              <div class='control'>
-                <%= f.text_area :body, class: 'textarea', placeholder: 'Comment here' %>
-              </div>
-            </div>
-
-            <div class='action'>
-              <%= f.submit 'Comment', class: 'button is-primary is-outlined' %>
-            </div>
-          <% end %>
-        </div>
-      </section>
+      <%= render 'shared/posts/create_comments', post: post %>
     </div>
   <% end %>
 </section>

@@ -1,8 +1,8 @@
 class PostsController < ApplicationController
   def index
-    @user = current_user
-    @posts = @user.posts.includes(:comments, :likes, :user)
-    
+    @friends = current_user.accepted_friends + current_user.inverse_accepted_friends
+    @posts = Post.where(user_id: @friends).includes(:user, :likes, :comments)
+
     @post = Post.new
     @comment = Comment.new
   end

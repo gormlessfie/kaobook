@@ -1,0 +1,14 @@
+<div class='block'>
+  <% if post.comments.empty? %>
+    <h3 class='title is-6'>No comments</h3>
+  <% else %>
+    <h3 class='title is-6'>Comments</h3>
+
+    <% post.comments.each do |comment| %>
+      <div class= 'container box'>
+        <p><%=comment.user.email %>: <%= comment.body %></p>
+        <%= link_to 'delete', post_comment_path(post, comment), method: :delete, class: 'button is-danger is-small is-outlined' %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

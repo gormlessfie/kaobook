@@ -1,0 +1,17 @@
+<div class='column is-11'>
+  <div class='columns'>
+    <span class='column is-1'>
+      <% if post.user.profile.avatar.attached? %>
+        <%= image_tag(post.user.profile.avatar.variant(resize: '100x100'), size: '100') %>
+      <% else %>
+        <%= image_tag 'unknown.jpeg', size: '100' %>
+      <% end %>
+    </span>
+
+    <span class='column is-11'>
+      <h2 class='title is-3 mb-0 '><%= current_user.profile.detail.name.fname %> <%= current_user.profile.detail.name.lname %></h2>
+      <p class='subtitle is-6 mt-0 mb-0'>@<%= current_user.username %></p>
+      <span>posted on: <%= post.created_at.to_formatted_s(:long) %></span>
+    </span>
+  </div>
+</div>
