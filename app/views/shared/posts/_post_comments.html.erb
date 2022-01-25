@@ -10,11 +10,11 @@
           <div class='column'>
             <p>
               <div class='columns'>
-                <div class='column pr-0 mr-0'>
+                <div class='column pr-2'>
                   <%= render 'shared/posts/user_pic', item: comment, size: '80', dim: '80x80' %>
                 </div>
 
-                <div class='column is-10 pl-0 ml-0'>
+                <div class='column is-four-fifths pl-2'>
                   <h4 class='block subtitle is-6 mb-1'>
                     <strong>
                       <%= comment.user.profile.detail.name.fname %>
@@ -27,7 +27,7 @@
                   </p>
                 </div>
 
-                <div class='column is-1'>
+                <div class='column is-narrow'>
                   <% if comment.user == current_user %>
                     <%= link_to 'delete', post_comment_path(post, comment), method: :delete, class: 'button is-danger is-small is-outlined' %>
                   <% end %>
