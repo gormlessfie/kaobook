@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = Post.where(user_id: User.where(id: @user.friends))
+    @friends = @user.accepted_friends + @user.inverse_accepted_friends
+    @posts = Post.where(user_id: @friends).includes(:user)
   end
 end
