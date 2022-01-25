@@ -1,11 +1,20 @@
-<%= render 'user_profile' %>
-
-<%= render 'shared/posts/create_post', post: @post %>
-
-<section class='section'>
-  <div class='container mb-3'>
-    <h2 class='title is-4'>Your Posts</h1>
+<div class='columns'>
+  <div class='column is-narrow'>
+    <%= render 'user_profile' %>
   </div>
 
-  <%=  render 'shared/posts/list_posts', posts: @posts %>
-</section>
+  <div class='column'>
+    <%= render 'shared/posts/create_post', post: @post %>
+
+    <section class='section'>
+      <div class='container mb-3'>
+        <h2 class='title is-4'>Your Posts</h1>
+      </div>
+
+      <%=  render 'shared/posts/list_posts', posts: @posts %>
+    </section>
+  </div>
+
+  <div class='column is-one-quarter'>
+  </div>
+</div>
