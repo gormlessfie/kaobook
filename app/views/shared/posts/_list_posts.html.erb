@@ -1,0 +1,25 @@
+<% posts.each do |post| %>
+  <div class='container box'>
+    <div class=columns>
+      <%= render 'shared/posts/post_user_details', post: post %>
+
+      <%= render 'shared/posts/post_dropdown', post: post %>
+    </div>
+
+    <section class='section'>
+      <div class='block'>
+        <p><%= post.body %></p>
+      </div>
+    </section>
+    
+    <section class='section'>
+      <div class='container'>
+        <%= render 'shared/posts/post_likes', post: post %>
+
+        <%= render 'shared/posts/post_comments', post: post %>
+      </div>
+    </section>
+
+    <%= render 'shared/posts/create_comments', post: post %>
+  </div>
+<% end %>

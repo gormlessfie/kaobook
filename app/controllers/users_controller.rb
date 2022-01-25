@@ -9,6 +9,14 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = Post.where(user: @user)
+
+    @posts = Post
+      .where(user: @user)
+      .includes(:user, { user: { profile: { detail: :name }}}, :likes,
+                :comments, { comments: { user: { profile: { detail: :name, avatar_attachment: :blob }}}})
+      .order(created_at: :desc)
+    
+    @post = Post.new
+    @comment = Comment.new
   end
 end

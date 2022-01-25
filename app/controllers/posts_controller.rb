@@ -2,12 +2,12 @@ class PostsController < ApplicationController
   def index
     @friends = current_user.accepted_friends + current_user.inverse_accepted_friends
     @friends << current_user
+
     @posts = Post
       .where(user_id: @friends)
       .includes(:user, { user: { profile: { detail: :name }}},
                 :likes,
-                :comments, { comments: { user: { profile: { detail: :name, avatar_attachment: :blob } } } }
-               )
+                :comments, { comments: { user: { profile: { detail: :name, avatar_attachment: :blob }}}})
       .order(created_at: :desc)
 
     @post = Post.new

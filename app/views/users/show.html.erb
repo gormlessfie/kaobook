@@ -1,15 +1,11 @@
-USER SHOW PAGE.<br>
-<%= @user.username%> SHOW PAGE <br><br>
+<%= render 'user_profile' %>
 
-THIS IS THEIR OWN PERSONAL SHOW PAGE.
+<%= render 'shared/posts/create_post', post: @post %>
 
-MEDIA CARD
+<section class='section'>
+  <div class='container mb-3'>
+    <h2 class='title is-4'>Your Posts</h1>
+  </div>
 
-POSTS ACRDS OR SOMETHING
-IDK
-<br>
-<br>
-<br>
-<% @posts.each do |post| %>
-  <%= post.user.username %>: <%= post.body %><br>
-<% end %>
+  <%=  render 'shared/posts/list_posts', posts: @posts %>
+</section>
