@@ -14,7 +14,6 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
-    @user = @comment.post.user
     redirect_to request.referer
     @comment.destroy
   end

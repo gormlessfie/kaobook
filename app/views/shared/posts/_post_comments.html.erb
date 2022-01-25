@@ -6,8 +6,37 @@
 
     <% post.comments.each do |comment| %>
       <div class= 'container box'>
-        <p><%=comment.user.email %>: <%= comment.body %></p>
-        <%= link_to 'delete', post_comment_path(post, comment), method: :delete, class: 'button is-danger is-small is-outlined' %>
+        <div class='columns'>
+          <div class='column'>
+            <p>
+              <div class='columns'>
+                <div class='column pr-0 mr-0'>
+                  <%= render 'shared/posts/post_user_pic', item: comment, size: '50', dim: '50x50' %>
+                </div>
+
+                <div class='column is-10 pl-0 ml-0'>
+                  <h4 class='block subtitle is-6'>
+                    <strong>
+                      <%= comment.user.profile.detail.name.fname %>
+                      <%= comment.user.profile.detail.name.lname %>
+                    </strong>
+                  </h4>
+                  
+                  <p class='block'>
+                    <%= comment.body %>
+                  </p>
+                </div>
+
+                <div class='column is-1'>
+                  <% if comment.user == current_user %>
+                    <%= link_to 'delete', post_comment_path(post, comment), method: :delete, class: 'button is-danger is-small is-outlined' %>
+                  <% end %>
+                </div>
+
+              </div>
+          </div>
+
+        </div>
       </div>
     <% end %>
   <% end %>
