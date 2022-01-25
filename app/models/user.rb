@@ -14,26 +14,22 @@ class User < ApplicationRecord
 
   has_many :pending_friendships, -> { where(active: false) },
     class_name: 'Friendship', dependent: :destroy
-
   has_many :pending_friends, through: :pending_friendships, source: :friend,
     dependent: :destroy
 
   has_many :accepted_friendships, -> { where(active: true) },
     class_name: 'Friendship', dependent: :destroy
-
   has_many :accepted_friends, through: :accepted_friendships, source: :friend,
     dependent: :destroy
 
 
   has_many :inverse_pending_friendships, -> { where(active: false) },
     class_name: 'Friendship', foreign_key: 'friend_id', dependent: :destroy
-
   has_many :inverse_pending_friends, through: :inverse_pending_friendships,
     source: :user
 
   has_many :inverse_accepted_friendships, -> { where(active: true) },
     class_name: 'Friendship', foreign_key: 'friend_id', dependent: :destroy
-  
   has_many :inverse_accepted_friends, through: :inverse_accepted_friendships,
     source: :user
 
