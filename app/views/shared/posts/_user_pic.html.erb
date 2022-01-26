@@ -1,5 +1,5 @@
 <% if item.user.profile.avatar.attached? %>
   <%= image_tag(item.user.profile.avatar.variant(resize: dim), size: size, alt: 'Profile picture') %>
 <% else %>
-  <%= image_tag 'unknown.jpeg', alt: 'Profile picture', size: size %>
+  <%= image_tag 'unknown.jpg', alt: 'Profile picture', size: size %>
 <% end %>
