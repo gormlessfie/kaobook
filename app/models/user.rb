@@ -44,13 +44,13 @@ class User < ApplicationRecord
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
       user.username = "#{full_name[0]}_#{full_name[1]}"
-      create_user_extra_info(user)
+      create_user_extra_info(user, full_name)
 
       user.skip_confirmation!
     end
   end
 
-  def create_user_extra_info(user)
+  def create_user_extra_info(user, full_name)
     user.create_profile
     user.profile.create_detail
     user.profile.detail.create_age
