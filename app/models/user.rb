@@ -51,13 +51,13 @@ class User < ApplicationRecord
   end
 
   def create_user_extra_info(user, full_name)
-    user.create_profile
-    user.profile.create_detail
-    user.profile.detail.create_age
-    user.profile.detail.create_location
-    user.profile.detail.create_gender
-    user.profile.detail.create_contact_information
-    user.profile.detail.create_name(fname: full_name[0], lname: full_name[1])
+    user.create_profile!
+    user.profile.create_detail!
+    user.profile.detail.create_age!
+    user.profile.detail.create_location!
+    user.profile.detail.create_gender!(gender: 'non-binary')
+    user.profile.detail.create_contact_information!
+    user.profile.detail.create_name!(fname: full_name[0], lname: full_name[1])
   end
 
   def sent_invitation?(user, friend)
