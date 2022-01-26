@@ -8,7 +8,7 @@
         <% if current_user.profile.avatar.attached? %>
           <%= image_tag(current_user.profile.avatar.variant(resize: '100x100'), size: '100') %>
         <% else %>
-          <%= image_tag 'unknown.jpeg' %>
+          <%= image_tag 'unknown.jpg' %>
         <% end %>
       </div>
 
