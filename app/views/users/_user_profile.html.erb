@@ -6,7 +6,7 @@
           <% if @user.profile.avatar.attached? %>
             <%= image_tag @user.profile.avatar.variant(resize: '128x128'), class: 'is-rounded' %>
           <% else %>
-            <%= image_tag 'unknown.jpeg', size: '150' %>
+            <%= image_tag 'unknown.jpg', size: '150' %>
           <% end %>
         </figure>
       </div>

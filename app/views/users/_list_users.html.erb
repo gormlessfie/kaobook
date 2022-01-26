@@ -9,7 +9,7 @@
             <% if user.profile.avatar.attached? %>
               <%= image_tag user.profile.avatar.variant(resize: '80x80'), size: '80' %>
             <% else %>
-              <%= image_tag 'unknown.jpeg', size: '80' %>
+              <%= image_tag 'unknown.jpg', size: '80' %>
             <% end %>
           </div>
           <div class='column is-narrow'>
