@@ -29,6 +29,8 @@ gem 'devise', '~> 4.8', '>= 4.8.1'
 gem 'bulma-rails', '~> 0.9.2'
 gem 'font-awesome-sass', '~> 5.15', '>= 5.15.1'
 
+gem 'omniauth-rails_csrf_protection', '~> 1.0'
+gem 'omniauth-facebook', '~> 9.0'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
