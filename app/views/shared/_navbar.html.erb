@@ -15,6 +15,10 @@
         </div>
 
         <div class='navbar-item'>
+          <%= link_to 'Personal Page', user_path(current_user), class: 'button is-dark' %>
+        </div>
+
+        <div class='navbar-item'>
           <%= link_to 'Profile', user_profile_path(current_user), class: 'button is-dark' %>
         </div>
       <% end %>
