@@ -48,13 +48,15 @@ class User < ApplicationRecord
       user.skip_confirmation!
     end
 
-    created_user.create_profile
-    created_user.profile.create_detail
-    created_user.profile.detail.create_age
-    created_user.profile.detail.create_location
-    created_user.profile.detail.create_gender(gender: 'non-binary')
-    created_user.profile.detail.create_contact_information
-    created_user.profile.detail.create_name(fname: full_name[0], lname:full_name[1])
+    unless created_user.profile
+      created_user.create_profile
+      created_user.profile.create_detail
+      created_user.profile.detail.create_age
+      created_user.profile.detail.create_location
+      created_user.profile.detail.create_gender
+      created_user.profile.detail.create_contact_information
+      created_user.profile.detail.create_name(fname: full_name[0], lname:full_name[1])
+    end
 
     created_user
   end
