@@ -40,13 +40,23 @@ class User < ApplicationRecord
   def self.from_omniauth(auth)
     full_name = auth.info.name.split(" ")
 
-    where(provider: auth.provider, uid: auth.uid).first_or_create! do |user|
+    created_user = where(provider: auth.provider, uid: auth.uid).first_or_create! do |user|
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
       user.username = "#{full_name[0]}_#{full_name[1]}"
 
       user.skip_confirmation!
     end
+
+    created_user.create_profile
+    created_user.profile.create_detail
+    created_user.profile.detail.create_age
+    created_user.profile.detail.create_location
+    created_user.profile.detail.create_gender(gender: 'non-binary')
+    created_user.profile.detail.create_contact_information
+    created_user.profile.detail.create_name(fname: full_name[0], lname:full_name[1])
+
+    created_user
   end
 
   def sent_invitation?(user, friend)
