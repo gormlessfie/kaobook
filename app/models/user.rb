@@ -8,7 +8,7 @@ class User < ApplicationRecord
   
   devise :omniauthable, omniauth_providers: %i[facebook]
 
-  validates :username, presence: true, length: { in: 3..12 }
+  validates :username, presence: true, length: { in: 3..24 }
 
   has_many :comments, dependent: :destroy
   has_many :posts, dependent: :destroy
@@ -43,7 +43,7 @@ class User < ApplicationRecord
     created_user = where(provider: auth.provider, uid: auth.uid).first_or_create! do |user|
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
-      user.username = "#{full_name[0]}_#{full_name[1]}_#{rand(10000..30000)}"
+      user.username = "#{full_name[0]}_#{full_name[1]}_#{rand(1..999)}"
 
       user.skip_confirmation!
     end
