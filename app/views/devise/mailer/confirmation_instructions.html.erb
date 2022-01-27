@@ -1,5 +1,6 @@
 <p>Welcome <%= @email %>!</p>
 
+<p>Welcome to kaobook. This is a mimic of Facebook. I hope this works and you are able to create posts, post a profile picture, and add friends.</p>
 <p>You can confirm your account email through the link below:</p>
 
 <p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
