@@ -18,7 +18,7 @@ class User < ApplicationRecord
     class_name: 'Friendship', dependent: :destroy
   has_many :pending_friends, through: :pending_friendships, source: :friend,
     dependent: :destroy
-
+  
   has_many :accepted_friendships, -> { where(active: true) },
     class_name: 'Friendship', dependent: :destroy
   has_many :accepted_friends, through: :accepted_friendships, source: :friend,
